@@ -27,14 +27,12 @@ All info from the PVT protocol could be saved but I choosed some and formed the 
 
 
 # Hardware
-GPS M8N $30 http://www.readytoflyquads.com/ublox-m8n-gps-module-no-mounting-backplane
-
-Arduino Nano $5.50 eBay
-
+GPS M8N $30 http://www.readytoflyquads.com/ublox-m8n-gps-module-no-mounting-backplane  
+Arduino Nano $5.50 eBay  
 microSD card module $3 eBay
 
 Neo Ublox M8N
-Website https://www.u-blox.com/en/product/neo-m8-series
+Website https://www.u-blox.com/en/product/neo-m8-series  
 Protocoll sheet https://www.u-blox.com/sites/default/files/products/documents/u-bloxM8_ReceiverDescrProtSpec_%28UBX-13003221%29_Public.pdf 
 
 <img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/GPS%20Logger%20Assembly.jpg">
