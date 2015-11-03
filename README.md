@@ -23,3 +23,12 @@ XXX.X, XX-X-XXXX, X:XX:XX, XX.XXXXXXX, -XXX.XXXXXXX, X.XX, XX.XX, X, X
 528.7, 11-2-2015, 8:59.39, 33.1946411, -117.2495117, 4.31, 76.83, 5, 3
 528.8, 11-2-2015, 8:59.39, 33.1946372, -117.2495117, 4.21, 76.77, 5, 3
 528.9, 11-2-2015, 8:59.39, 33.1946372, -117.2495269, 4.08, 76.75, 5, 3
+
+# Hardware
+GPS M8N $30 http://www.readytoflyquads.com/ublox-m8n-gps-module-no-mounting-backplane
+Arduino Nano $5.50 eBay
+microSD card module $3 eBay
+
+Neo Ublox M8N
+Website https://www.u-blox.com/en/product/neo-m8-series
+Protocoll sheet https://www.u-blox.com/sites/default/files/products/documents/u-bloxM8_ReceiverDescrProtSpec_%28UBX-13003221%29_Public.pdf 
