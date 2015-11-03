@@ -18,18 +18,19 @@ The Arduino Nano parse  recieved GPS data and save it to a log file on the micro
 
 All info from the PVT protocol could be saved but I choosed some and formed the output to look like this.
 
-Time, Date, Clock, Latitude, Longitutde, Speed, Altitude, Number_of_Satelites, Fix
-XXX.X, XX-X-XXXX, X:XX:XX, XX.XXXXXXX, -XXX.XXXXXXX, X.XX, XX.XX, X, X
-528.4, 11-2-2015, 8:59.39, 33.1946182, -117.2495269, 4.15, 77.82, 4, 3
-528.5, 11-2-2015, 8:59.39, 33.1946258, -117.2495269, 4.14, 77.32, 4, 3
-528.6, 11-2-2015, 8:59.39, 33.1946372, -117.2495117, 4.29, 76.97, 4, 3
-528.7, 11-2-2015, 8:59.39, 33.1946411, -117.2495117, 4.31, 76.83, 5, 3
-528.8, 11-2-2015, 8:59.39, 33.1946372, -117.2495117, 4.21, 76.77, 5, 3
-528.9, 11-2-2015, 8:59.39, 33.1946372, -117.2495269, 4.08, 76.75, 5, 3
+|Time|Date|Clock|Latitude|Longitutde|Speed|Altitude|Numb of Sats|Fix|
+|---|---|---|---|---|---|---|---|---|
+|XXX.X|XX-X-XXXX|X:XX:XX|XX.XXXXXXX|-XXX.XXXXXXX|X.XX|XX.X|X|X|
+|528.4|11-2-2015|8:59.39|33.1946182|-117.2495269|4.15|77.82|4|3|
+|528.5|11-2-2015|8:59.39|33.1946258|-117.2495269|4.14|77.32|4|3|
+
+
 
 # Hardware
 GPS M8N $30 http://www.readytoflyquads.com/ublox-m8n-gps-module-no-mounting-backplane
+
 Arduino Nano $5.50 eBay
+
 microSD card module $3 eBay
 
 Neo Ublox M8N
