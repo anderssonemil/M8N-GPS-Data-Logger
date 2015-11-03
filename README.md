@@ -3,11 +3,11 @@ GPS data logger uisng U-blox M8N gps, Arduino Nano, and SD card reader
 
 # Introduction
 The goal for this project is a cheep and simple high frequence (10Hz) GPS datalogger that I can use during different activitis like motocrossing and mountain biking. I based it on Arduino Nano with U-blox M8N GPS, microSD card module, and a small 2s(7.4V) lithium battrey.
-I wanted the data to be saved in a way that it could be imported to "DASHWARE". DASHWARE is a free software that let you overlay video with data like speed, laptime, distance, map, etc. collected form a GPS but also other logged data like heartrate etc.
+I wanted the data to be saved in a way that it could be imported to "DASHWARE"  http://www.dashware.net/ . DASHWARE is a free software that let you overlay video with data like speed, laptime, distance, map, etc. collected form a GPS but also other logged data like heartrate etc.
 
-I searched the webb for a good M8N gps parser library and struggled to find one that could read the UBX-NAV-PVT protocol. I tried iforce2d's "10Hz U-blox binary GPS data in 66 lines of code (arduino) " on youtube with no success to modifie it for the PVT protocol. I came across a few more libaries and sattled for code shared by Jordi Muñoz and Jose Julio, DIYDrones.com. I made a few changes to adopt tothe PVT protocol and it worked really well.
+I searched the webb for a good M8N gps parser library and struggled to find one that could read the UBX-NAV-PVT protocol. I tried iforce2d's "10Hz U-blox binary GPS data in 66 lines of code (arduino)" https://youtu.be/TwhCX0c8Xe0  on youtube that did some of what I wanted but I could not  modifie it for the PVT protocol. I came across a few more libaries and sattled for code shared by Jordi Muñoz and Jose Julio, DIYDrones.com. I made a few changes to adopt to the PVT protocol and it worked really well.
 
-# Function
+# Functions
 Two LED's give feedback on SD card and GPS status.
 A push button starts and stopps the data logging and it's saved to a new file for each log.
 The GPS sends only the UBX-NAV-PVT protocol 10 times per second (10Hz).
