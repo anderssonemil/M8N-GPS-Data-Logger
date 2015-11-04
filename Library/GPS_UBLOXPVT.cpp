@@ -12,17 +12,17 @@
 		Baud rate : 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, or 115200
 
 	Active messages : 
-		NAV - POSLLH Geodetic Position Solution, PAGE 66 of datasheet
-		NAV - VELNED Velocity Solution in NED, PAGE 71 of datasheet
-		NAV - STATUS Receiver Navigation Status
-			or 
-		NAV - SOL Navigation Solution Information
-
+		NAV - PVT
+		
 	Methods:
 		Init() : GPS Initialization
 		Read() : Call this funcion as often as you want to ensure you read the incomming gps data
 		
 	Properties:
+		
+	------------------------------------------------
+	NOTE, this table of variable need to be updated!!!!!!!!!!!!!!
+
 		Lattitude : Lattitude * 10,000,000 (long value)
 		Longitude : Longitude * 10,000,000 (long value)
 		Altitude :	Altitude * 100 (meters) (long value)
@@ -31,13 +31,12 @@
 		NewData : 1 when a new data is received.
 		You need to write a 0 to NewData when you read the data
 		Fix : 1: GPS FIX, 0: No Fix (normal logic)	
+	------------------------------------------------
+
 */
 
 #include "GPS_UBLOXPVT.h"
-#include "Arduino.h"  //#include "WProgram.h"
-//#include <SoftwareSerial.h>
-
-//SoftwareSerial serial = SoftwareSerial(3,5); //GPS TX/RX
+#include "Arduino.h"
 
 // Constructors ////////////////////////////////////////////////////////////////
 GPS_UBLOXPVT_Class::GPS_UBLOXPVT_Class()
@@ -108,11 +107,9 @@ void GPS_UBLOXPVT_Class::Read(void)
 		// We check if the payload lenght is valid...
 			if (UBX_payload_length_hi >= UBX_MAXPAYLOAD)
 				{
-			//if (PrintErrors)
-			//Serial.println("ERR:GPS_BAD_PAYLOAD_LENGTH!!");          
-					UBX_step = 0;	 // Bad data, so restart to step zero and try again.		 
-					ck_a = 0;
-					ck_b = 0;
+				UBX_step = 0;	 // Bad data, so restart to step zero and try again.		 
+				ck_a = 0;
+				ck_b = 0;
 				}
 				break;
 			case 5:
@@ -146,8 +143,7 @@ void GPS_UBLOXPVT_Class::Read(void)
 				parse_ubx_gps();							 // Parse the new GPS packet
 				else
 			{
-			//if (PrintErrors)
-			//Serial.println("ERR:GPS_CHK!!");
+			//Errors, something could be done
 			}
         // Variable initialization
 				UBX_step = 0;
@@ -156,13 +152,10 @@ void GPS_UBLOXPVT_Class::Read(void)
 				GPS_timer = millis(); // Restarting timer...
 				break;
 		}
-		}		// End for...
-  // If we don´t receive GPS packets in 2 seconds => Bad FIX state
+		}		// End for 2 seconds If we don´t receive GPS packets in 2 seconds => Bad FIX state
 	if ((millis() - GPS_timer) > 2000)
 		{
 	Fix = 0;
-	//if (PrintErrors)
-	  //Serial.print("ERR:GPS_TIMEOUT!!" ); Serial.print(UBX_step);
 		}
 }
 
@@ -237,7 +230,6 @@ void GPS_UBLOXPVT_Class::parse_ubx_gps(void)
 //head acc
 			j += 4;
 //pdop
-
 			NewData = 1;
 			break;
 
@@ -278,8 +270,6 @@ short GPS_UBLOXPVT_Class::join_2_bytes(unsigned char Buffer[])
 	shortUnion.byte[1] = *(Buffer + 1);
 	return(shortUnion.dword);
 }
-
-//Altitude = join_4_bytes(&UBX_buffer[j]);
 
 
 /****************************************************************
