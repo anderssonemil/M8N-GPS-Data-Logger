@@ -34,25 +34,34 @@ class GPS_UBLOXPVT_Class
 	void Init();
 	void Read();
     // Properties
-	long Time;          //GPS Millisecond Time of Week
+	//long Time;          //GPS Millisecond Time of Week
 	short Year;
 	int8_t Month;
 	int8_t Day;
 	int8_t Hour;
 	int8_t Min;
 	int8_t Sec;
+	//int8_t valid;
+	//long tAcc;
+	//long nano;
+	uint8_t Fix;        // 2-3:GPS FIX   0:No FIX (normal logic)
+	//int8_t flags
+	//int8_t reserved_1
 	int8_t numSV;
-	long Lattitude;     // Geographic coordinates
-	long Longitude;
+	long Longitude;    // Geographic coordinates
+	long Lattitude; 
+	//long height;
 	long Altitude;
+	//long hacc;
+	//long valN;
+	//long valE;
+	//long valD;
 	long Ground_Speed;
-	long Speed_3d;      //Speed (3-D)
-	long Ground_Course;
-	uint8_t NumSats;      // Number of visible satelites
-	uint8_t Fix;        // 1:GPS FIX   0:No FIX (normal logic)
+	//long headmot;
+	//long sacc;
+	//long headAcc;
+	//short pdop;
 	uint8_t NewData;    // 1:New GPS Data
-	uint8_t PrintErrors; // 1: To Print GPS Errors (for debug)
-	
 };
 
 extern GPS_UBLOXPVT_Class GPS;

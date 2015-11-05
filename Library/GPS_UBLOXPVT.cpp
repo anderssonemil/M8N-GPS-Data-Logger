@@ -18,20 +18,21 @@
 		Init() : GPS Initialization
 		Read() : Call this funcion as often as you want to ensure you read the incomming gps data
 		
-	Properties:
-		
-	------------------------------------------------
-	NOTE, this table of variable need to be updated!!!!!!!!!!!!!!
-
-		Lattitude : Lattitude * 10,000,000 (long value)
+	Properties in use:
+		Year :
+		Month :
+		Day :
+		Hour :
+		Min :
+		Sec :
+		Fix : 2-3 = GPS FIX, 0 = No Fix (normal logic)
+		NumSV ; Number of satelites
 		Longitude : Longitude * 10,000,000 (long value)
+		Lattitude : Lattitude * 10,000,000 (long value)
 		Altitude :	Altitude * 100 (meters) (long value)
 		Ground_speed : Speed (m / s) * 100 (long value)
-		Ground_course : Course (degrees) * 100 (long value)
 		NewData : 1 when a new data is received.
 		You need to write a 0 to NewData when you read the data
-		Fix : 1: GPS FIX, 0: No Fix (normal logic)	
-	------------------------------------------------
 
 */
 
@@ -175,31 +176,31 @@ void GPS_UBLOXPVT_Class::parse_ubx_gps(void)
 
 		case 0x07: // ID NAV - PVT 
 			j = 0;
-			Time = join_4_bytes(&UBX_buffer[j]); // ms Time of week
+	//Time = join_4_bytes(&UBX_buffer[j]); // ms Time of week
 			j += 4;
 			Year = join_2_bytes(&UBX_buffer[j]); // Year
 			j += 2;
-			Month = UBX_buffer[j]; // Date
+			Month = UBX_buffer[j]; // Month
 			j += 1;
-			Day = UBX_buffer[j]; 
+			Day = UBX_buffer[j]; //Day
 			j += 1;
-			Hour = UBX_buffer[j]; 
+			Hour = UBX_buffer[j]; //Hour
 			j += 1;
-			Min = UBX_buffer[j]; 
+			Min = UBX_buffer[j]; //Minute
 			j += 1;
-			Sec = UBX_buffer[j];
+			Sec = UBX_buffer[j];	//Seconds
 			j += 1;
-//valid
+	//valid = UBX_buffer[j];	//Validity Flag
 			j += 1;
-//time acc
+	//tAcc = join_4_bytes(&UBX_buffer[j]); //Time Accuracy
 			j += 4;
-//nano
+	//nano = join_4_bytes(&UBX_buffer[j]); //Fraction of second
 			j += 4;
-			Fix = UBX_buffer[j];
+			Fix = UBX_buffer[j];	//Fix type(0 No fix, 1 Dead Reckoning, 2 2D, 3 3D, 4 GNSS +Dead Recknoning, 5 time only
 			j += 1;
-//flags
+	//flags = UBX_buffer[j]; //Fix status flags
 			j += 1;
-//reserved 1
+	//reserved_1  = UBX_buffer[j];  //Reserved, not used
 			j += 1;
 			numSV = UBX_buffer[j]; //Satelites in view
 			j += 1;
@@ -207,29 +208,32 @@ void GPS_UBLOXPVT_Class::parse_ubx_gps(void)
 			j += 4;
 			Lattitude = join_4_bytes(&UBX_buffer[j]); // lat * 10000000
 			j += 4;
-//Altitude = join_4_bytes(&UBX_buffer[j]); // Altitude over ellipsoid
+	//height = join_4_bytes(&UBX_buffer[j]); // Altitude over ellipsoid
 			j += 4;
 			Altitude = join_4_bytes(&UBX_buffer[j]); // Altitude over sealevel
 			j += 4;
-//hacc
+//hacc = join_4_bytes(&UBX_buffer[j]); //Horizontal accuracy
 			j += 4;
-//vacc
+//vacc = join_4_bytes(&UBX_buffer[j]); //Vertical accuracy
 			j += 4;
-//vein
+//velN = join_4_bytes(&UBX_buffer[j]); //Velocity North
 			j += 4;
-//vale
+	//valE = join_4_bytes(&UBX_buffer[j]); //Velocity East
 			j += 4;
-//veld
+//velD = join_4_bytes(&UBX_buffer[j]); //Velocity down
 			j += 4;
 			Ground_Speed = join_4_bytes(&UBX_buffer[j]); // Speed in mm/s
 			j += 4;
-//headmot
+	//headmot = join_4_bytes(&UBX_buffer[j]); //Heading motion 2D
 			j += 4;
-//sacc
+	//sacc = join_4_bytes(&UBX_buffer[j]); //Speed accuracy
 			j += 4;
-//head acc
+	//headAcc = join_4_bytes(&UBX_buffer[j]); //Heading accuracy
 			j += 4;
-//pdop
+	//pdop = join_2_bytes(&UBX_buffer[j]); //Position DOP
+
+	//A few Bytes are skipped here. (Reserved bytes and Heading of vehicle(2D)), see Ublox spec if needed
+
 			NewData = 1;
 			break;
 
