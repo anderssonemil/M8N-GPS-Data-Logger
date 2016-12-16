@@ -1,7 +1,7 @@
 # M8N-GPS-Data-Logger
 GPS data logger uisng U-blox M8N gps, Arduino Nano, and SD card reader
 
-<img alt="GPS Logger Box" src="https://raw.githubusercontent.com/anderssonemil/M8N-GPS-Data-Logger/master/GPS%20Logger%20Box.jpg">
+<img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Component%20Assembly.jpg">
 
 
 # Introduction
@@ -45,10 +45,16 @@ ARDUINO_Time, Latitude, Longitude, Speed
 548.8, 33.1948930, -117.2509003, 27.77
 
 
-# Hardware update
-I have some new hardware, description and pictures coming soon
+# New Hardware (In work)
+I have some new hardware/layout. More descriptions and pictures coming soon. I'm currently designing a new enclosure to 3D print.
 
-# Hardware
+<img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Component%20Assembly.jpg">
+
+<img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Circuite%20Board%20Components.jpg">
+
+<img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Circuite%20Board%20Traces.jpg">
+
+# Old Hardware
 GPS M8N $30 http://www.readytoflyquads.com/ublox-m8n-gps-module-no-mounting-backplane  
 Arduino Nano $5.50 eBay  
 microSD card module $3 eBay
@@ -58,3 +64,5 @@ Website https://www.u-blox.com/en/product/neo-m8-series
 Protocoll sheet https://www.u-blox.com/sites/default/files/products/documents/u-bloxM8_ReceiverDescrProtSpec_%28UBX-13003221%29_Public.pdf 
 
 <img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/GPS%20Logger%20Assembly.jpg">
+
+
