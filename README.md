@@ -20,6 +20,23 @@ All info from the PVT protocol could be saved but I choosed some and formed the 
 
 Sample ".txt" file
 
+|Log saved by ArduinoLogger|---|---|---|---|---|---|---|---|
+|Time|Date|Clock|Latitude|Longitude|Speed|Altitude|Number_of_Satelites|Fix|
+|---|---|---|---|---|---|---|---|---|
+|XXX.X|XX-X-XXXX|X:XX:XX|XX.XXXXXXX|-XXX.XXXXXXX|X.XX|XX.X|X|X|
+|502.0|12-16-2016|8:21.54|33.1941285|117.2643490|27.75|95.48|19|3|
+|502.1|12-16-2016|8:21.54|33.1941316|-117.2643194|27.80|95.55|19|3|
+|502.2|12-16-2016|8:21.54|33.1941350|-117.2642899|27.75|95.62|19|3|
+
+Sample ".csv" file
+|ARDUINO_Time|Latitude|Longitude|Speed|
+|---|---|---|---|
+|548.0|33.1949041|-117.2511381|27.62|
+|548.1|33.1949031|-117.2511084|27.67|
+|548.2|33.1949022|-117.2510786|27.71|
+
+
+
 Log saved by ArduinoLogger
 Time, Date, Clock, Latitude, Longitude, Speed, Altitude, Number_of_Satelites, Fix
 502.0, 12-16-2016, 8:21.54, 33.1941285, -117.2643490, 27.75, 95.48, 19, 3
