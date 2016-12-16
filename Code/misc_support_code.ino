@@ -1,20 +1,6 @@
-
- 
- //Read Logger Configurations from SD card
-void GetLoggerConfig(){
-    File commandFileConfig = SD.open("Config.txt");
-    if (commandFileConfig)
-      {
-        //Reads the "Config.txt" to get GPS refresh rate
-        GPS_Refresh_Rate = commandFileConfig.parseInt();
-        //timeCorrection = commandFileConfig.parseInt();
-        }
-        commandFileConfig.close();
-      }
-
 //Get last saved file number and increase it with 1. Write first line to new log file
 void startSD(){
-    File commandFile = SD.open("COUNTER.txt");
+    File commandFile = SD.open("FILE.txt");
     if (commandFile)
       {
         //Reads the "Last_File _Number.txt" to get last saved file number
@@ -24,12 +10,11 @@ void startSD(){
         }
         commandFile.close();
     
-      File commandFile = SD.open("COUNTER.txt", FILE_WRITE);
+      File commandFile = SD.open("FILE.txt", FILE_WRITE);
       commandFile.seek(0);
       current_file = ++ current_file;
       commandFile.print(current_file);
       fileName = current_file + fileType;
-      fileNameCSV = current_file + fileTypeCSV;
       commandFile.close();
       }
     else
@@ -47,19 +32,9 @@ void startSD(){
     File dataFile = SD.open(fileName, FILE_WRITE);
       if (dataFile)
       {                   // Write first line(header) to the log file
-        dataFile.println("Log saved by ArduinoLogger");
-        dataFile.println("Time, Date, Clock, Latitude, Longitude, Speed, Altitude, Number_of_Satelites, Fix");
+        dataFile.println("Time, Date, Clock, Latitude, Longitutde, Speed, Altitude, Number_of_Satelites, Fix");
         dataFile.close();
       }
-
-      //Start CSV log file
-      File dataFileCSV = SD.open(fileNameCSV, FILE_WRITE);
-      if (dataFileCSV)
-      {                   // Write first line(header) to the log file
-        dataFileCSV.println("ARDUINO_Time, Latitude, Longitude, Speed");
-        dataFileCSV.close();
-      }
-      
        // Error Bliink LED
       for (int y = 0; y < 2; y++){
       digitalWrite(Led[0][0], HIGH); //RED LED on
@@ -67,7 +42,7 @@ void startSD(){
       digitalWrite(Led[0][0], LOW); //RED LED off
       delay(150);
      }
-      SDSetup = HIGH;  //Set to High when Header is written and logfile is ready for data to be saved
+     SDSetup = HIGH;  //Set to High when Header is written and logfile is ready for data to be saved
       Start_millis = millis();    //Set start time of SD save to millis
     }
 
@@ -83,54 +58,13 @@ void SDSave(){
     dataFile.print((millis()- Start_millis)/1000.0f,1); dataFile.print(", ");
     dataFile.print(month()); dataFile.print("-"); dataFile.print(day()); dataFile.print("-");  dataFile.print(year());  dataFile.print(", "); 
     dataFile.print(hour());  dataFile.print(":"); dataFile.print(minute()); dataFile.print(".");  dataFile.print(second()); dataFile.print(", ");
-
-    String lattitudeString = String(GPS.Lattitude,DEC);
-    int stringLength = (lattitudeString.length());
-
-    // Save Latitude
-    dataFile.print(lattitudeString.substring(0,stringLength-7)); dataFile.print(".");
-    dataFile.print(lattitudeString.substring(stringLength-7,stringLength)); dataFile.print(", ");
-
-    String longitudeString = String(GPS.Longitude,DEC);
-    stringLength = (longitudeString.length());
-    
-    // Save Longitude
-    dataFile.print(longitudeString.substring(0,stringLength-7)); dataFile.print(".");
-    dataFile.print(longitudeString.substring(stringLength-7,stringLength)); dataFile.print(", ");
-
-    dataFile.print(GPS.Ground_Speed/1000.0f,2); dataFile.print(", "); // Speed
-    dataFile.print(GPS.Altitude/1000.0f,2); dataFile.print(", "); // Altitude
-
-    dataFile.print(GPS.numSV); dataFile.print(", "); // Type of Fix
-    
-    dataFile.println(GPS.Fix);  // Type of Fix
+    dataFile.print(GPS.Lattitude/10000000.0f,7); dataFile.print(", ");
+    dataFile.print(GPS.Longitude/10000000.0f,7); dataFile.print(", ");
+    dataFile.print(GPS.Ground_Speed/1000.0f,2); dataFile.print(", ");
+    dataFile.print(GPS.Altitude/1000.0f,2); dataFile.print(", ");
+    dataFile.print(GPS.numSV); dataFile.print(", ");
+    dataFile.println(GPS.Fix);
     dataFile.close();
-    }
-  
-
-  //Log to CSV file
-  File dataFileCSV = SD.open(fileNameCSV, FILE_WRITE);
-    if (dataFileCSV)
-    {
-    dataFileCSV.print((millis()- Start_millis)/1000.0f,1); dataFileCSV.print(", ");
-
-    String lattitudeString = String(GPS.Lattitude,DEC);
-    int stringLength = (lattitudeString.length());
- 
-    dataFileCSV.print(lattitudeString.substring(0,stringLength-7));
-    dataFileCSV.print(".");
-    dataFileCSV.print(lattitudeString.substring(stringLength-7,stringLength)); dataFileCSV.print(", ");
-
-    String longitudeString = String(GPS.Longitude,DEC);
-    stringLength = (longitudeString.length());
- 
-    dataFileCSV.print(longitudeString.substring(0,stringLength-7));
-    dataFileCSV.print(".");
-    dataFileCSV.print(longitudeString.substring(stringLength-7,stringLength)); dataFileCSV.print(", ");
-   
-    dataFileCSV.println(GPS.Ground_Speed/1000.0f,2); //dataFile.print(", ");
-
-    dataFileCSV.close();
     }
   }
 
@@ -151,7 +85,6 @@ void triggerButton(){
         }
        else
        Led[0][2] = 0; //Turn the bliinikng off
-       SDSetup = LOW;
       }
     }
   }
@@ -167,7 +100,7 @@ void SetTime(){
       if (GPS.Year != 0)
         {
         setTime(GPS.Hour,GPS.Min,GPS.Sec,GPS.Day,GPS.Month,GPS.Year); 
-        adjustTime(-8 * SECS_PER_HOUR);
+        adjustTime(-7 * SECS_PER_HOUR);
         TimeSetup = true;
         }       
      }
@@ -195,5 +128,4 @@ unsigned long currentMillis = millis(); //Set currentMillis whent he function st
         digitalWrite(Led[x][0], LOW);
     }
   }
-
 
