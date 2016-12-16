@@ -42,7 +42,9 @@ All info from the PVT protocol could be saved but I choose some and formed the o
 Now that I have a 3D printer I decided to go for a cleaner layout with a circuit board eliminating all cables but the once for the GPS. I'm currently designing a new enclosure and I'll add pictures when done.
 
 GPS M8N $20 http://www.banggood.com/Ublox-NEO-M8N-Flight-Controller-GPS-with-Protective-Shell-for-PIX-PX4-Pixhawk-p-1005394.html
-Arduino Nano $5.50 eBay  
+
+Arduino Nano $5.50 eBay
+
 microSD card module $3 eBay
 
 Neo Ublox M8N
