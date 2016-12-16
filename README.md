@@ -18,9 +18,7 @@ The Arduino Nano parse  recieved GPS data and save it to two log files on the mi
 
 All info from the PVT protocol could be saved but I choosed some and formed the output to my liking.
 
-Sample ".txt" file
-
-|Log saved by ArduinoLogger| | | | | | | | |
+### Sample ".txt" file
 
 |Time|Date|Clock|Latitude|Longitude|Speed|Altitude|Number_of_Satelites|Fix|
 |---|---|---|---|---|---|---|---|---|
@@ -29,7 +27,7 @@ Sample ".txt" file
 |502.1|12-16-2016|8:21.54|33.1941316|-117.2643194|27.80|95.55|19|3|
 |502.2|12-16-2016|8:21.54|33.1941350|-117.2642899|27.75|95.62|19|3|
 
-Sample ".csv" file
+### Sample ".csv" file
 
 |ARDUINO_Time|Latitude|Longitude|Speed|
 |---|---|---|---|
