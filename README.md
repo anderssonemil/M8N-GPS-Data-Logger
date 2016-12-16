@@ -45,6 +45,8 @@ I have some new hardware/layout. More descriptions and pictures coming soon. I'm
 
 <img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Circuite%20Board%20Traces.jpg">
 
+<img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Schematic.bmp">
+
 # Old Hardware
 GPS M8N $30 http://www.readytoflyquads.com/ublox-m8n-gps-module-no-mounting-backplane  
 Arduino Nano $5.50 eBay  
