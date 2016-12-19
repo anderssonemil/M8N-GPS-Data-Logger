@@ -51,7 +51,11 @@ Neo Ublox M8N
 Website https://www.u-blox.com/en/product/neo-m8-series  
 Protocoll sheet https://www.u-blox.com/sites/default/files/products/documents/u-bloxM8_ReceiverDescrProtSpec_%28UBX-13003221%29_Public.pdf 
 
+Update 12-19-16, 3D printed box in work, first prototype
 
+<img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Prototype%20Box.jpg">
+
+<img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Prototype%20Box%20GPS.jpg">
 
 <img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Component%20Assembly.jpg">
 
