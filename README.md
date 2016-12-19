@@ -53,7 +53,7 @@ Protocoll sheet https://www.u-blox.com/sites/default/files/products/documents/u-
 
 Update 12-19-16, 3D printed box in work, first prototype
 
-<img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Prototype%20Box.jpg">
+<img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Prototype%20box.jpg">
 
 <img alt="GPS Logger Box" src="https://github.com/anderssonemil/M8N-GPS-Data-Logger/blob/master/Prototype%20Box%20GPS.jpg">
 
